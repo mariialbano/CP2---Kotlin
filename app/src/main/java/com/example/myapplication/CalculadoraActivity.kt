@@ -1,33 +1,47 @@
 package com.example.myapplication
 
-import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_calculadora
+import android.os.Bundle
+import kotlink.android.synthetic.main.activity_calculadora.*
 
 class CalculadoraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculadora)
-        btnCalcular.setOnClickListener {
-            val num1 = txtN1.text.toString().toDoub
-            val num2 = txtN2.text.toString().toDoub
-            val resultado = when (radioGroup.checkedRadioButt
-                    R.id.radioButtonAdd -> num1 + num2
-            R.id.radioButtonSubtract -> num1 - num2
-            R.id.radioButtonMultiply -> num1 * num2
-            R.id.radioButtonDivide -> {
-            if (num2 != 0.0) {
-                num1 / num2
-            } else {
-                // Tratamento de divisão por zero
-                Toast.makeText(this, "Não é possível
-                    return@setOnClickListener
-            }
+
+        btnSoma.setOnClickListener {
+            calculate("Soma")
         }
-            else -> 0.0 // Caso nenhum RadioButton esteja
+
+        btnSubtracao.setOnClickListener {
+            calculate("Subtração")
         }
-        // Exibir o resultado em um Toast
-        Toast.makeText(this, "Resultado: $resultado", Toast
+
+        btnMultiplicacao.setOnClickListener {
+            calculate("Multiplicação")
+        }
+
+        btnDivisao.setOnClickListener {
+            calculate("Divisão")
+        }
     }
+
+    private fun calculate(operador:Char):
+        val num1 = editTextNumber1.text.toString().toFloat()
+        val num2 = editTextNumber2.text.toString().toFloat()
+        val resultado = Float = when (operador){
+                'Soma' -> num1 + num2
+                'Subtração' -> num1 - num2
+                'Multiplicação' -> num1 * num2
+                'Divisão' -> {
+                    if (num2 != Of){
+                        num1 / num2
+                    } else {
+                        Float.NaN
+                    }
+                }
+                else -> Float.NaN
+            }
+    textViewResultado.text = "Resultado: $reasultado"
 }
+
